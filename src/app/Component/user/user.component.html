@@ -1,0 +1,351 @@
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    user management table
+  </h3>
+  <!-- Button trigger modal -->
+  <div class="col-sm-6 col-12 text-sm-end">
+    <button
+      type="button"
+      class="btn btn-md btn-outline-primary"
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
+    >
+      <i clas="fa fa-user"></i> Ajout User
+    </button>
+  </div>
+  <div class="card-body">
+    <div id="table">
+      <table
+        class="table table-bordered table-responsive-md table-striped text-center"
+      >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Post title</th>
+            <th scope="col">Phone num</th>
+            <th scope="col">Hiring Date</th>
+            <th scope="col">Role</th>
+            <th scope="col" colspan="2" style="text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of ListUsers">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.post_title }}</td>
+            <td>{{ user.phone_num }}</td>
+            <td>{{ user.hiring_date }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="deleteUser(user.id)"
+              >
+                Delete
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                data-toggle="modal"
+                data-target="#modifyUser"
+                (click)="openModel(user)"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Model ajout user -->
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="formulaire" (ngSubmit)="check()">
+                <div class="form-group">
+                  <label for="exampleInputName">FirstName</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputfirstName"
+                    aria-describedby="NameHelp"
+                    placeholder="Enter your firstname please"
+                    formControlName="firstName"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputLastName">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputLastName"
+                    placeholder="Enter your lastname please"
+                    formControlName="lastName"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputJobTitle">Post title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPostTitle"
+                    placeholder="Enter your post title please"
+                    formControlName="post_title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPhoneNumber">Phone Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPhoneNumber"
+                    placeholder="Enter your Phone Number please"
+                    formControlName="phone_num"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputHiringDate">Hiring Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="exampleInputHiringDate"
+                    placeholder="Enter your hiring date please"
+                    formControlName="hiring_date"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputemail">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    id="exampleInputemail"
+                    placeholder="Enter your email please"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputemail">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    formControlName="password"
+                    id="exampleInputpass"
+                    placeholder="Enter your password please"
+                  />
+                </div>
+                <h3>Entrez les coordonnées de votre voiture</h3>
+                <div class="form-group">
+                  <label for="exampleInputMatricule">Matricule</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Matricule"
+                    id="exampleInputMatricule"
+                    placeholder="Enter your licence plate please"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputType">Type</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Type"
+                    id="exampleInputType"
+                    placeholder="Enter your car type please"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model modify user -->
+
+      <div
+        class="modal fade"
+        id="modifyUser"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modifyUser"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Update User
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form #f="ngForm" (ngSubmit)="modifyUsers(f)">
+                <div class="form-group">
+                  <label for="exampleInputName">FirstName</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputfirstName"
+                    placeholder="Enter your name please"
+                    [(ngModel)]="userModify.firstName"
+                    name="firstName"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputLastName">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputLastName"
+                    placeholder="Enter your last name please"
+                    name="lastName"
+                    [(ngModel)]="userModify.lastName"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputJobTitle">Job title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputJobTitle"
+                    placeholder="Enter your job title please"
+                    name="post_title"
+                    [(ngModel)]="userModify.post_title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPhoneNumber">Phone Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPhoneNumber"
+                    placeholder="Enter your Phone Number please"
+                    name="phone_num"
+                    [(ngModel)]="userModify.phone_num"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputHiringDate">Hiring Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="exampleInputHiringDate"
+                    placeholder="Enter your hiring date please"
+                    name="hiring_date"
+                    [(ngModel)]="userModify.hiring_date"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPriority">Role</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPriority"
+                    placeholder="Enter your priority please"
+                    name="role"
+                    [(ngModel)]="userModify.role"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputemail">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputemail"
+                    placeholder="Enter your email please"
+                    name="email"
+                    [(ngModel)]="userModify.email"
+                  />
+                </div>
+                <h3>Entrez les coordonnées de votre voiture</h3>
+                <div class="form-group">
+                  <label for="exampleInputMatricule">Matricule</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputMatricule"
+                    placeholder="Enter your matricule please"
+                    name="matricule"
+                    [(ngModel)]="userModify.voitures.matricule"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputType">Type</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputType"
+                    placeholder="Enter your type please"
+                    name="type"
+                    [(ngModel)]="userModify.voitures.type"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Editable table -->

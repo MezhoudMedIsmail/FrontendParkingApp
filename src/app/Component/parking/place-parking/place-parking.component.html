@@ -1,0 +1,234 @@
+<mat-toolbar color="primary">
+  Parkings View
+  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-success" (click)="affecter()"> Affecter tout</button>
+  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#affecteruser"> affecter une personne</button>
+
+</mat-toolbar>
+
+<div class="content" *ngIf="adminCheck">
+  <div class="mx-n1"  class="text-left">
+    <a
+      (click)="createPlaceParking()"
+      class="btn d-inline-flex btn-sm mx-1">
+      <span class="badge rounded-pill bg-info text-dark"> + </span> <span>Create</span>
+    </a>
+  </div>
+</div>
+
+<div class="grid">
+
+  <ng-container *ngFor="let parking of placeParkings">
+  <div class="card" style="width: 18rem;">
+    <img routerLink="../placeparking/{{parking.id}}" mat-card-image src="">
+    <div class="card-body">
+      <h5 class="card-title">{{parking.libelle}}</h5>
+      <p>{{parking.id}}</p>
+      <p>{{parking.status == true ? "Active" : "Not Active"}}</p>
+    </div>
+    <button class="btn btn-success" disabled="disabled" *ngIf="parking.user?.email == userEmail">Booked for you</button>
+    <button class="btn btn-danger" *ngIf="parking.user?.email == userEmail" (click)="cancelReservation(parking.id)">Annuler Reservation</button>
+
+    <button class="btn btn-success" disabled="disabled" *ngIf="parking.user!= null && parking.user?.email != userEmail">Booked for {{parking.user?.firstName  + " "+ parking.user?.lastName}}</button>
+
+    <button  type="button"
+      class="btn btn-md btn-outline-primary"
+      data-toggle="modal"
+      data-target="#exampleModalReserver" *ngIf="parking.user?.email == null" (click)="placeParkingToedit = parking.id">Reserve</button>
+
+    <div class="card-body" *ngIf="adminCheck" background>
+        <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
+              data-toggle="modal"
+              data-target="#modifyParking"
+              (click)="openModel(parking)">
+                <span class="pe-2"> <i class="bi bi-pencil"></i> </span> <span>Edit</span>
+              </button>
+              <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
+              (click)="deletePlaceParking(parking.id)">
+              <span class="pe-2"> <i class="bi bi-x-circle-fill"></i> </span> <span>Delete</span>
+              </button>
+    </div>
+  </div>
+  </ng-container>
+
+</div>
+
+<div
+class="modal fade"
+id="exampleModalReserver"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalReserverTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Reserver votre date</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formul" (ngSubmit)="bookForm()">
+        <div class="form-group">
+          <label for="exampleInputReserver">Selectionnez la periode souhaitée</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputStart"
+            placeholder="Entrer la date souhaitée "
+            formControlName="start_date"
+          />
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer date fin "
+            formControlName="end_date"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+          class="btn btn-primary">Book now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<div
+  class="modal fade"
+  id="ModifyplaceParking"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="placeParking"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">modify Place Parking</h5>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="modifyPlaceParkings(f)">
+          <div class="form-group">
+            <label for="exampleInputName">Status</label>
+            <select name="status" id="status" [(ngModel)]="place.status">
+              <option value="Active">Active</option>
+              <option value="NotActive">NotActive</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Affecter un seul user-->
+<div
+class="modal fade"
+id="affecteruser"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalReserverTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Reserver votre date</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formul" (ngSubmit)="ReserverPersonne()">
+        <div class="form-group">
+          <label for="exampleInputReserver">Selectionnez la periode souhaitée</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputStart"
+            placeholder="Entrer la date souhaitée "
+            formControlName="start_date"
+          />
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer date fin "
+            formControlName="end_date"
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer user Id"
+            formControlName="userIdAff"
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer place id"
+            formControlName="placeID"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+          class="btn btn-primary">Book now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+

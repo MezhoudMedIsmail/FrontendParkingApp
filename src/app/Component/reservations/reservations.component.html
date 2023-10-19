@@ -1,0 +1,50 @@
+<label class="switch">
+  <input type="checkbox" (change)="title == 'book' ? title ='reservation' : title ='book' ">
+  <span class="slider"></span>
+</label>
+{{title}}
+
+<table class="table table-striped" *ngIf="title == 'book'">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reservation time</th>
+      <th scope="col">Start date</th>
+      <th scope="col">end date</th>
+      <th scope="col">user Email</th>
+      <th scope="col" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let placeParking of listBookedPlaceParkings">
+      <th scope="row">{{placeParking.id}}</th>
+      <td>{{placeParking.reservation | date}}</td>
+      <td>{{placeParking.startDate | date}}</td>
+      <td>{{placeParking.endDate | date}}</td>
+      <td>{{placeParking.user?.email}}</td>
+      <td><button class="btn btn-primary" (click)="reservation(placeParking,true)"> Confirm</button></td>
+      <td><button class="btn btn-danger" (click)="reservation(placeParking,false)">Refuse</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped" *ngIf="title == 'reservation'">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reservation time</th>
+      <th scope="col">Start date</th>
+      <th scope="col">end date</th>
+      <th scope="col">user Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let placeParking of listReservedPlaceParkings">
+      <th scope="row">{{placeParking.id}}</th>
+      <td>{{placeParking.reservation | date}}</td>
+      <td>{{placeParking.startDate | date}}</td>
+      <td>{{placeParking.endDate | date}}</td>
+      <td>{{placeParking.user?.email}}</td>
+    </tr>
+  </tbody>
+</table>

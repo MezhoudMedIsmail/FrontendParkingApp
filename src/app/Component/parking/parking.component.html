@@ -1,0 +1,193 @@
+
+<mat-toolbar color="primary">
+  Parkings View
+</mat-toolbar>
+
+<div class="content">
+  <div class="mx-n1"  class="text-left">
+    <a
+    *ngIf="adminCheck"
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
+      class="btn d-inline-flex btn-sm mx-1">
+      <span class="badge rounded-pill bg-info text-dark"> <i class="bi bi-plus"></i> </span> <span>Create</span>
+    </a>
+  </div>
+</div>
+
+<div class="grid">
+  <ng-container *ngFor="let parking of ListParkings">
+  <div class="card" style="width: 18rem;">
+    <img style="cursor: pointer;" routerLink="../placeparking/{{parking.id}}" mat-card-image src="../assets/image/image1.jpg">
+    <div class="card-body">
+      <h5 class="card-title">{{parking.libelle}}</h5>
+    </div>
+    <div class="card-body" *ngIf="adminCheck">
+        <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
+              data-toggle="modal"
+              data-target="#modifyParking"
+              (click)="openModel(parking)">
+                <span class="pe-2"> <i class="bi bi-pencil"></i> </span> <span>Edit</span>
+              </button>
+              <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
+              (click)="deleteParking(parking.id)">
+              <span class="pe-2"> <i class="bi bi-x-circle-fill"></i> </span> <span>Delete</span>
+              </button>
+    </div>
+  </div>
+</ng-container>
+</div>
+<div
+class="modal fade"
+id="exampleModalCenter"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Parking</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formulaire" (ngSubmit)="check()">
+        <div class="form-group">
+          <label for="exampleInputAdresse">Adresse</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputAdresse"
+            aria-describedby="AdresseHelp"
+            placeholder="Enter the adress of the new Parking"
+            formControlName="adresse"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputCapacite">Capacite</label>
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputCapacite"
+            placeholder="Entrer la capacite de votre nouveau Parking"
+            formControlName="capacite"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputJobTitle">Libelle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputLibelle"
+            placeholder="Entrer le libelle de votre nouveau Parking "
+            formControlName="libelle"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit"
+          class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<div
+  class="modal fade"
+  id="modifyUser"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modifyUser"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">modify Parking</h5>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="modifyParkings(f)">
+          <div class="form-group">
+            <label for="exampleInputName">libelle</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputLibelle"
+              placeholder="Enter your name please"
+              name="libelle"
+              [(ngModel)]="parkingModify.libelle"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCapacite">capacite</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputcapacite"
+              placeholder="Enter your last name please"
+              name="capacite"
+              [(ngModel)]="parkingModify.capacite"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputJobTitle">Adresse</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputJobTitle"
+              placeholder="Enter your job title please"
+              name="adresse"
+              [(ngModel)]="parkingModify.adresse"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

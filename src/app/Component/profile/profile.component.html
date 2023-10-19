@@ -1,0 +1,207 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item active" aria-current="page">Profil</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+
+          <div class="card-body text-center">
+            <div class="profile-pic">
+              <label class="-label" for="file" >
+                <span class="glyphicon glyphicon-camera"></span>
+                <span>Modifier Photo</span>
+              </label>
+              <input id="file" type="file" (change)="onImageUpload($event)"/>
+              <img [src]="imageProfile" id="output" width="200" alt="Profile Picture"/>
+            </div>
+
+            <h5 class="my-3"> {{user.firstName + " " + user.lastName}}</h5>
+            <p class="text-muted mb-1">{{user.post_title}}</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary"  data-toggle="modal"
+              data-target="#modifyUser">Mettre à jour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-container>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Prènom</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.firstName}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Nom</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.lastName}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Vous etes un </p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.post_title}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Téléphone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.phone_num}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date d'embauche</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.hiring_date | date}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div
+class="modal fade"
+id="modifyUser"
+tabindex="-1"
+role="dialog"
+aria-labelledby="modifyUser"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">
+        Update User
+      </h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #f="ngForm" (ngSubmit)="modifyUsers(f)">
+        <div class="form-group">
+          <label for="exampleInputName">FirstName</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputfirstName"
+            placeholder="Enter your name please"
+            [(ngModel)]="user.firstName"
+            name="firstName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputLastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputLastName"
+            placeholder="Enter your last name please"
+            name="lastName"
+            [(ngModel)]="user.lastName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputJobTitle">Job title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputJobTitle"
+            placeholder="Enter your job title please"
+            name="post_title"
+            [(ngModel)]="user.post_title"
+            required="ressss"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhoneNumber">Phone Number</label>
+          <input
+
+            type="text"
+            class="form-control"
+            id="exampleInputPhoneNumber"
+            placeholder="Enter your Phone Number please"
+            name="phone_num"
+            [(ngModel)]="user.phone_num"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputHiringDate">Hiring Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputHiringDate"
+            placeholder="Enter your hiring date please"
+            name="hiring_date"
+            [(ngModel)]="user.hiring_date"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputemail">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputemail"
+            placeholder="Enter your email please"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+          />
+        </div>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
