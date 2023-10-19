@@ -1,21 +1,35 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">name</th>
-      <th scope="col">start date</th>
-      <th scope="col">end date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let history of listHistory">
-      <th scope="row">{{history.id}}</th>
-      <td>{{history.name}}</td>
-      <td>{{history.startingDate | date}}</td>
-      <td>{{history.endDate | date}}</td>
-    </tr>
-  </tbody>
-</table>
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <strong>Html To PDF in Angular Application</strong>
+  </div>
+  <div>
+  <input type="button" value="Convert" (click)="convetToPDF()"/>
+  <button class="btn btn-primary"  (click)="convetToPDF()">Convert</button>
+  </div>
 
-  <div echarts [options]="option" class="chart-container"></div>
 
+
+<div id="contentToConvert">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">start date</th>
+        <th scope="col">end date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of listHistory">
+        <th scope="row">{{history.id}}</th>
+        <td>{{history.name}}</td>
+        <td>{{history.startingDate | date}}</td>
+        <td>{{history.endDate | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <div echarts [options]="option" class="chart-container"></div>
+
+
+</div>
