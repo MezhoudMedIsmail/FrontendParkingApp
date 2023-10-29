@@ -42,12 +42,29 @@ formulaire: FormGroup = new FormGroup({
 
   });
 
+
+  affectertout: FormGroup = new FormGroup({
+    start_date: new FormControl('', [Validators.required]),
+    end_date : new FormControl('', [Validators.required])
+  });
+
+  get startt_date(){
+    return this.affectertout.get("start_date");
+  }
+  get endt_date(){
+    return this.affectertout.get("end_date");
+  }
+
+
+
+
   get start_date(){
     return this.formul.get("start_date");
   }
   get end_date(){
     return this.formul.get("end_date");
   }
+
   get userIdAff(){
     return this.formul.get("userIdAff");
   }
@@ -126,8 +143,16 @@ deletePlaceParking(id :any){
 
 
 
+
+
+
   affecter(){
-    this.placeParkingService.reserverAll().subscribe((res)=>{
+    const parking = {
+      startDate : this.startt_date?.value as Date,
+      endDate : this.endt_date?.value as Date
+    }
+    console.log(parking)
+    this.placeParkingService.reserverAll(parking).subscribe((res)=>{
       alert("affectation avec success")
       window.location.reload();
     })

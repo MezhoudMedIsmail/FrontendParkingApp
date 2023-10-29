@@ -1,18 +1,19 @@
 <label class="switch">
-  <input type="checkbox" (change)="title == 'book' ? title ='reservation' : title ='book' ">
+  <input type="checkbox" (change)="title == 'Liste en attente' ? title ='Réservations effectuées' : title ='Liste en attente' ">
   <span class="slider"></span>
 </label>
 {{title}}
 
-<table class="table table-striped" *ngIf="title == 'book'">
+<table class="table table-dark table-striped" *ngIf="title == 'Liste en attente'">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Reservation time</th>
-      <th scope="col">Start date</th>
-      <th scope="col">end date</th>
-      <th scope="col">user Email</th>
-      <th scope="col" colspan="2">Action</th>
+      <th scope="col">Temps de reservation </th>
+      <th scope="col">Date début</th>
+      <th scope="col">Date fin </th>
+      <th scope="col">Nom</th>
+      <th scope="col">Emails</th>
+      <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{placeParking.reservation | date}}</td>
       <td>{{placeParking.startDate | date}}</td>
       <td>{{placeParking.endDate | date}}</td>
+      <td>{{placeParking.user?.lastName}}</td>
       <td>{{placeParking.user?.email}}</td>
       <td><button class="btn btn-primary" (click)="reservation(placeParking,true)"> Confirm</button></td>
       <td><button class="btn btn-danger" (click)="reservation(placeParking,false)">Refuse</button></td>
@@ -28,14 +30,15 @@
   </tbody>
 </table>
 
-<table class="table table-striped" *ngIf="title == 'reservation'">
-  <thead>
+<table class="table table-success table-striped" *ngIf="title == 'Réservations effectuées'">
+  <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Reservation time</th>
-      <th scope="col">Start date</th>
-      <th scope="col">end date</th>
-      <th scope="col">user Email</th>
+      <th scope="col">Temps de reservation</th>
+      <th scope="col">Date début</th>
+      <th scope="col">Date fin</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Emails</th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +47,7 @@
       <td>{{placeParking.reservation | date}}</td>
       <td>{{placeParking.startDate | date}}</td>
       <td>{{placeParking.endDate | date}}</td>
+      <td>{{placeParking.user?.lastName}}</td>
       <td>{{placeParking.user?.email}}</td>
     </tr>
   </tbody>

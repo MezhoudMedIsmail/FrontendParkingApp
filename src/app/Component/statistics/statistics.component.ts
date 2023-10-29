@@ -63,10 +63,10 @@ convetToPDF(){
 createDiagram(){
   this.option = {
     title: {
-      text: 'Vehicles in Parking'
+      text: 'Parking'
     },
     legend: {
-      data: ['All places', 'Empty Places']
+      data: ['Toutes les places', 'Places disponibles']
     },
     tooltip: {
       trigger: 'axis',
@@ -79,7 +79,7 @@ createDiagram(){
       left: 20
     },
     yAxis: {
-      data: ['car'],
+      data: ['vehicules'],
       inverse: true,
       axisLine: { show: false },
       axisTick: { show: false },
@@ -102,7 +102,7 @@ createDiagram(){
     },
     series: [
       {
-        name: 'All places',
+        name: 'Toutes les places',
         type: 'pictorialBar',
         label: labelSetting,
         symbolRepeat: true,
@@ -116,7 +116,7 @@ createDiagram(){
         ]
       },
       {
-        name: 'Epmty Places',
+        name: 'Places disponibles',
         type: 'pictorialBar',
         barGap: '10%',
         label: labelSetting,

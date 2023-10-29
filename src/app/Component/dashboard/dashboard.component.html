@@ -1,19 +1,30 @@
 
 <div class="sidebar">
     <div class="side-content">
-        <div class="profile">
-            <div ><img src="../../../assets/sopra.png" width="120"></div>
-        </div>
+
+
+      <div class="user">
+        <div *ngIf="adminCheck"><img src="../../../assets/image/AdminLogo.png" width="120"></div>
+        <div *ngIf="!adminCheck"><img src="../../../assets/image/UserLogo.png" width="120"></div>
+    </div>
+
 
         <div class="side-menu">
             <ul>
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/statistics" routerLinkActive="active"> <i class="bi bi-bar-chart"></i> Statistics </a> </li>
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/profile" routerLinkActive="active"> <i class="bi bi-bar-chart"></i> Profile </a> </li>
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/parking" routerLinkActive="active"> <i class="bi bi-bookmarks"></i> Parking </a> </li>
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/user" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Users Management </a> </li>
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/reservations" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Reservations </a> </li>
+                <li class="nav-item" > <a class="nav-link" routerLink="/dashboard/statistics" routerLinkActive="active" > <i class="bi bi-bar-chart"></i> Rapports statistiques </a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/profile" routerLinkActive="active"> <i class="bi bi-bar-chart"></i>Section Profil</a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/parking" routerLinkActive="active"> <i class="bi bi-bookmarks"></i>Parking</a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/user" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Gestion des utilisateurs</a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/reservations" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Gestion des reservations </a> </li>
+                <li class="nav-item" style="cursor: pointer;"><a class="navbar-brand" (click)="logOut()">
+                  <img src="../../../assets/image/lOGOUT.png" alt="Logo" width="50" height="50">
+              </a></li>
             </ul>
         </div>
+
+        <div class="profile">
+          <div ><img src="../../../assets/image/LogoSopraSoft.jpeg" width="120"></div>
+      </div>
     </div>
 </div>
 
@@ -25,15 +36,15 @@
                 <span class="las la-bars"></span>
             </label>
             <a aria-disabled="true" routerLink="/dashboard/profile">
-              <img style="  width: 36px;
-              height: 36px;
+              <img style="  width: 56px;
+              height: 56px;
               object-fit: cover;
               border-radius: 50%;"
               [src]="imageProfile" alt="user Image Profile">
               {{email}}
             </a>
             <div></div>
-            <span style="cursor: pointer;" (click)="logOut()">Logout</span>
+
 
 
         </div>

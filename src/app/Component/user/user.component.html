@@ -1,7 +1,7 @@
 <!-- Editable table -->
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
-    user management table
+    Tableau de gestion des utilisateurs
   </h3>
   <!-- Button trigger modal -->
   <div class="col-sm-6 col-12 text-sm-end">
@@ -11,7 +11,7 @@
       data-toggle="modal"
       data-target="#exampleModalCenter"
     >
-      <i clas="fa fa-user"></i> Ajout User
+      <i clas="fa fa-user"></i> Ajouter un utilisateur
     </button>
   </div>
   <div class="card-body">
@@ -22,12 +22,12 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
             <th scope="col">E-mail</th>
-            <th scope="col">Post title</th>
-            <th scope="col">Phone num</th>
-            <th scope="col">Hiring Date</th>
+            <th scope="col">Titre du poste</th>
+            <th scope="col">Télephone</th>
+            <th scope="col">Date embauche</th>
             <th scope="col">Role</th>
             <th scope="col" colspan="2" style="text-align: center">Actions</th>
           </tr>
@@ -48,7 +48,7 @@
                 class="btn btn-outline-danger"
                 (click)="deleteUser(user.id)"
               >
-                Delete
+                Supprimer
               </button>
             </td>
             <td>
@@ -59,7 +59,7 @@
                 data-target="#modifyUser"
                 (click)="openModel(user)"
               >
-                Update
+                Modifier
               </button>
             </td>
           </tr>
@@ -78,7 +78,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un nouvel utilisateur</h5>
               <button
                 type="button"
                 class="close"
@@ -91,53 +91,53 @@
             <div class="modal-body">
               <form [formGroup]="formulaire" (ngSubmit)="check()">
                 <div class="form-group">
-                  <label for="exampleInputName">FirstName</label>
+                  <label for="exampleInputName">Prénom</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputfirstName"
                     aria-describedby="NameHelp"
-                    placeholder="Enter your firstname please"
+                    placeholder="Veuillez saisir le prénom"
                     formControlName="firstName"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputLastName">Last Name</label>
+                  <label for="exampleInputLastName">Nom</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputLastName"
-                    placeholder="Enter your lastname please"
+                    placeholder="Veuillez saisir le nom"
                     formControlName="lastName"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputJobTitle">Post title</label>
+                  <label for="exampleInputJobTitle">Titre du poste</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputPostTitle"
-                    placeholder="Enter your post title please"
+                    placeholder="Veuillez saisir le titre du poste"
                     formControlName="post_title"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPhoneNumber">Phone Number</label>
+                  <label for="exampleInputPhoneNumber">Téléphone</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputPhoneNumber"
-                    placeholder="Enter your Phone Number please"
+                    placeholder="Veuillez saisir le numéro de téléphone"
                     formControlName="phone_num"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputHiringDate">Hiring Date</label>
+                  <label for="exampleInputHiringDate">Date d'embauche</label>
                   <input
                     type="date"
                     class="form-control"
                     id="exampleInputHiringDate"
-                    placeholder="Enter your hiring date please"
+                    placeholder="Veuillez saisir la date d'embauche"
                     formControlName="hiring_date"
                   />
                 </div>
@@ -148,17 +148,17 @@
                     class="form-control"
                     formControlName="email"
                     id="exampleInputemail"
-                    placeholder="Enter your email please"
+                    placeholder="Veuillez saisir l'email"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputemail">Password</label>
+                  <label for="exampleInputemail">Mot de passe</label>
                   <input
                     type="password"
                     class="form-control"
                     formControlName="password"
                     id="exampleInputpass"
-                    placeholder="Enter your password please"
+                    placeholder="Veuillez saisir le mot de passe"
                   />
                 </div>
                 <h3>Entrez les coordonnées de votre voiture</h3>
@@ -169,17 +169,17 @@
                     class="form-control"
                     formControlName="Matricule"
                     id="exampleInputMatricule"
-                    placeholder="Enter your licence plate please"
+                    placeholder="Veuillez saisir la matricule du véhicule"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputType">Type</label>
+                  <label for="exampleInputType">Marque</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="Type"
                     id="exampleInputType"
-                    placeholder="Enter your car type please"
+                    placeholder="Veuillez saisir la marque du véhicule"
                   />
                 </div>
                 <div class="modal-footer">
@@ -188,10 +188,10 @@
                     class="btn btn-secondary"
                     data-dismiss="modal"
                   >
-                    Close
+                    Fermer
                   </button>
                   <button type="submit" class="btn btn-primary">
-                    Save changes
+                    Enregistrer
                   </button>
                 </div>
               </form>
@@ -228,56 +228,56 @@
             <div class="modal-body">
               <form #f="ngForm" (ngSubmit)="modifyUsers(f)">
                 <div class="form-group">
-                  <label for="exampleInputName">FirstName</label>
+                  <label for="exampleInputName">Prénom</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputfirstName"
-                    placeholder="Enter your name please"
+                    placeholder="Saisissez le nouveau prénom"
                     [(ngModel)]="userModify.firstName"
                     name="firstName"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputLastName">Last Name</label>
+                  <label for="exampleInputLastName">Nom</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputLastName"
-                    placeholder="Enter your last name please"
+                    placeholder="Saisissez le nouveau nom"
                     name="lastName"
                     [(ngModel)]="userModify.lastName"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputJobTitle">Job title</label>
+                  <label for="exampleInputJobTitle">Titre du poste</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputJobTitle"
-                    placeholder="Enter your job title please"
+                    placeholder="Saisissez le nouveau titre du poste"
                     name="post_title"
                     [(ngModel)]="userModify.post_title"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPhoneNumber">Phone Number</label>
+                  <label for="exampleInputPhoneNumber">Téléphone</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputPhoneNumber"
-                    placeholder="Enter your Phone Number please"
+                    placeholder="Saisissez le nouveau numéro de téléphone"
                     name="phone_num"
                     [(ngModel)]="userModify.phone_num"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputHiringDate">Hiring Date</label>
+                  <label for="exampleInputHiringDate">Date d'embauche</label>
                   <input
                     type="date"
                     class="form-control"
                     id="exampleInputHiringDate"
-                    placeholder="Enter your hiring date please"
+                    placeholder="Saisissez la nouvelle date d'embauche"
                     name="hiring_date"
                     [(ngModel)]="userModify.hiring_date"
                   />
@@ -288,7 +288,7 @@
                     type="text"
                     class="form-control"
                     id="exampleInputPriority"
-                    placeholder="Enter your priority please"
+                    placeholder="Saisissez le role"
                     name="role"
                     [(ngModel)]="userModify.role"
                   />
@@ -311,18 +311,18 @@
                     type="text"
                     class="form-control"
                     id="exampleInputMatricule"
-                    placeholder="Enter your matricule please"
+                    placeholder="Saisissez la nouvelle matricule"
                     name="matricule"
                     [(ngModel)]="userModify.voitures.matricule"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputType">Type</label>
+                  <label for="exampleInputType">Marque</label>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleInputType"
-                    placeholder="Enter your type please"
+                    placeholder="Saisissez la nouvelle marque"
                     name="type"
                     [(ngModel)]="userModify.voitures.type"
                   />
@@ -333,10 +333,10 @@
                     class="btn btn-secondary"
                     data-dismiss="modal"
                   >
-                    Close
+                    Fermer
                   </button>
                   <button type="submit" class="btn btn-primary">
-                    Save changes
+                    Mettre à jour
                   </button>
                 </div>
               </form>

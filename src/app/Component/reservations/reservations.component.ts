@@ -8,7 +8,7 @@ import { PlaceParkingService } from 'src/app/Service/place-parking.service';
   styleUrls: ['./reservations.component.css'],
 })
 export class ReservationsComponent {
-  title = 'book';
+  title = 'Liste en attente';
   listBookedPlaceParkings : any[] = [];
   listReservedPlaceParkings : any[] = [];
   constructor(private placeParkingService : PlaceParkingService){

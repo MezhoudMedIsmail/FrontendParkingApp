@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   Parkings View
-  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-success" (click)="affecter()"> Affecter tout</button>
+  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-success" data-toggle="modal" data-target="#affectertout" > Affecter tout</button>
   <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#affecteruser"> affecter une personne</button>
 
 </mat-toolbar>
@@ -19,7 +19,7 @@
 
   <ng-container *ngFor="let parking of placeParkings">
   <div class="card" style="width: 18rem;">
-    <img routerLink="../placeparking/{{parking.id}}" mat-card-image src="">
+    <img routerLink="../placeparking/{{parking.id}}" mat-card-image src="../assets/image/pkk.jpeg">
     <div class="card-body">
       <h5 class="card-title">{{parking.libelle}}</h5>
       <p>{{parking.id}}</p>
@@ -36,18 +36,13 @@
       data-target="#exampleModalReserver" *ngIf="parking.user?.email == null" (click)="placeParkingToedit = parking.id">Reserve</button>
 
     <div class="card-body" *ngIf="adminCheck" background>
-        <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
-              data-toggle="modal"
-              data-target="#modifyParking"
-              (click)="openModel(parking)">
-                <span class="pe-2"> <i class="bi bi-pencil"></i> </span> <span>Edit</span>
-              </button>
               <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
               (click)="deletePlaceParking(parking.id)">
               <span class="pe-2"> <i class="bi bi-x-circle-fill"></i> </span> <span>Delete</span>
               </button>
     </div>
   </div>
+  <br><br>
   </ng-container>
 
 </div>
@@ -107,6 +102,10 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+
+<!--modifier-->
 
 <div
   class="modal fade"
@@ -231,4 +230,73 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<!--Affecter un tout-->
+<div
+class="modal fade"
+id="affectertout"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalReserverTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Reserver votre date</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+    <div class="modal-body">
+      <form [formGroup]="affectertout" (ngSubmit)="affecter()">
+        <div class="form-group">
+          <label for="exampleInputReserver">Selectionnez la periode souhaitée</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputStart"
+            placeholder="Entrer la date souhaitée "
+            formControlName="start_date"
+          />
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer date fin "
+            formControlName="end_date"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+          class="btn btn-primary">Book now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
 

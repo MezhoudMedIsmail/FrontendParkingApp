@@ -48,8 +48,8 @@ constructor(private Http : HttpClient) {
 
 
 
-  reserverAll(){
-    return this.Http.post(API_URL_USERS,null);
+  reserverAll(data : any){
+    return this.Http.post(API_URL_USERS,data);
   }
 
   reserver(placeparking : number,data : any){
