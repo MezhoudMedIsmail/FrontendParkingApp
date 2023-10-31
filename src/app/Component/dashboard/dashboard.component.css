@@ -27,7 +27,7 @@
     bottom: 0;
     top: 0;
     z-index: 100;
-    background: linear-gradient(to bottom, #888888, #ffffff);
+    background: linear-gradient(to top , #233365, #ffffff);
         transition: left 300ms;
 }
 
@@ -75,7 +75,7 @@
 .profile {
   position: fixed;
     text-align: center;
-    padding: 2rem 0rem;
+    padding: 0rem 1rem;
     bottom: 0;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .side-menu a.active {
-  background-color: #007bff; /* Background color for the selected item */
+  background-color: #143f6d; /* Background color for the selected item */
     color: #fff; /* Text color for the selected item */}
 
 .side-menu a.active span, .side-menu a.active small {
@@ -141,7 +141,7 @@
 }
 
 .side-menu a span, .side-menu a small {
-    color: #899DC1;
+    color: #5871a1;
 }
 
 #menu-toggle:checked ~ .sidebar {

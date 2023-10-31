@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ParkingService } from 'src/app/Service/parking.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-parking',
   templateUrl: './parking.component.html',
@@ -71,7 +72,7 @@ export class ParkingComponent {
     );
 
       }else{
-        alert('Please fill in all required fields');
+        Swal.fire('Oops',"Veuillez vérifier les champs",'error')
       }
       console.log(parking);
     }
@@ -85,13 +86,25 @@ export class ParkingComponent {
 
     modifyParkings(f: NgForm) {
       this.service.modify(this.parkingModify).subscribe((res: any) => {
-        alert('updated sucess !');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Modification éffectuée avec succés',
+          showConfirmButton: false,
+          timer: 3000
+        })
       });
     }
 
     deleteParking(id: any) {
       this.service.delete(id).subscribe((res: any) => {
-        alert(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Suppression avec succés',
+          showConfirmButton: false,
+          timer: 3000
+        })
       });
 
       this.getParkings();

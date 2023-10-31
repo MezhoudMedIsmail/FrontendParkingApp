@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild  , AfterViewInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatCalendarCellCssClasses, MatDateRangeInput,  } from '@angular/material/datepicker';
 import { PlaceParkingService } from 'src/app/Service/place-parking.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
@@ -29,11 +30,19 @@ export class ReservationsComponent {
     placeParking.status = status;
     if(status){
       this.placeParkingService.reserver(placeParking.id,placeParking).subscribe((res :any)=>{
-        alert("Validation has been confirmed");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Confirmation avec succés',
+          showConfirmButton: false,
+          timer: 7000
+        })
+        Swal.fire('Oops',"Confirmation échouée",'error');
       })
     }else{
       this.placeParkingService.cancelReserver(placeParking.id).subscribe(()=>{
-        alert("Validation has been confirmed");
+        Swal.fire('Oops',"La réservation est annulée",'error');
+        window.location.reload();
       })
     }
   }

@@ -1,7 +1,7 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="dark">
   Parkings View
   <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-success" data-toggle="modal" data-target="#affectertout" > Affecter tout</button>
-  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#affecteruser"> affecter une personne</button>
+  <button *ngIf="adminCheck" style="margin-left: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#affecteruser"> Affecter par personne</button>
 
 </mat-toolbar>
 
@@ -25,7 +25,7 @@
       <p>{{parking.id}}</p>
       <p>{{parking.status == true ? "Active" : "Not Active"}}</p>
     </div>
-    <button class="btn btn-success" disabled="disabled" *ngIf="parking.user?.email == userEmail">Booked for you</button>
+    <button class="btn btn-success" disabled="disabled" *ngIf="parking.user?.email == userEmail">Réservée pour vous</button>
     <button class="btn btn-danger" *ngIf="parking.user?.email == userEmail" (click)="cancelReservation(parking.id)">Annuler Reservation</button>
 
     <button class="btn btn-success" disabled="disabled" *ngIf="parking.user!= null && parking.user?.email != userEmail">Booked for {{parking.user?.firstName  + " "+ parking.user?.lastName}}</button>

@@ -28,6 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ProfileComponent } from './Component/profile/profile.component';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { AccueilComponent } from './Component/accueil/accueil.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -43,6 +44,7 @@ export function tokenGetter() {
     StatisticsComponent,
     ReservationsComponent,
     ProfileComponent,
+    AccueilComponent,
 
   ],
   imports: [

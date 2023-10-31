@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ParkingService } from 'src/app/Service/parking.service';
 import { PlaceParkingService } from 'src/app/Service/place-parking.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-place-parking',
@@ -79,11 +80,17 @@ formulaire: FormGroup = new FormGroup({
     }
     this.placeParkingService.book(this.placeParkingToedit,parking).subscribe(
         () => {
-          alert("Your Submition done successfully Please wiat for the confiramtion")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Reservation éffectuée avec succés',
+            showConfirmButton: false,
+            timer: 3000
+          })
           window.location.reload();
         },
         (error:any) => {
-          console.log(error);
+          Swal.fire('Oops',"Reservation non éffectuée",'error')
         }
     );
   }
@@ -118,7 +125,13 @@ modifyPlaceParkings(f :NgForm){
 
 deletePlaceParking(id :any){
   this.placeParkingService.delete(id).subscribe((res)=>{
-    alert("Delete with success")
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Suppression éffectuée avec succés',
+      showConfirmButton: false,
+      timer: 3000
+    })
     this.ngOnInit()
   })}
 
@@ -134,10 +147,16 @@ deletePlaceParking(id :any){
       user : null
     }
     this.placeParkingService.create(newPlace,this.id).subscribe((res :any)=>{
-      alert("Added Successfully");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Création avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      });
       window.location.reload();
     },(error)=>{
-      console.log(error)
+      Swal.fire('Oops',"Veuillez vérifier les champs",'error')
     })
   }
 
@@ -153,7 +172,13 @@ deletePlaceParking(id :any){
     }
     console.log(parking)
     this.placeParkingService.reserverAll(parking).subscribe((res)=>{
-      alert("affectation avec success")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Affectation éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      })
       window.location.reload();
     })
   }
@@ -165,14 +190,26 @@ deletePlaceParking(id :any){
       endDate : this.end_date?.value as Date
     }
     this.placeParkingService.ReserverPersonne(this.placeID?.value,parking,this.userIdAff?.value).subscribe((res :any)=>{
-      alert("affectation avec success")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Affectation éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      })
       window.location.reload();
     })
   }
 
   cancelReservation(placeId : number){
     this.placeParkingService.cancelReserver(placeId).subscribe(()=>{
-      alert("Annulation has been confirmed");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Annulation éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      })
       window.location.reload();
     })
   }

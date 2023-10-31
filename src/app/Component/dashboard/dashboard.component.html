@@ -6,12 +6,12 @@
       <div class="user">
         <div *ngIf="adminCheck"><img src="../../../assets/image/AdminLogo.png" width="120"></div>
         <div *ngIf="!adminCheck"><img src="../../../assets/image/UserLogo.png" width="120"></div>
-    </div>
+      </div>
 
 
         <div class="side-menu">
             <ul>
-                <li class="nav-item" > <a class="nav-link" routerLink="/dashboard/statistics" routerLinkActive="active" > <i class="bi bi-bar-chart"></i> Rapports statistiques </a> </li>
+                <li class="nav-item" > <a class="nav-link" routerLink="/dashboard/statistics" routerLinkActive="active" *ngIf="adminCheck" > <i class="bi bi-bar-chart"></i> Rapports statistiques </a> </li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/profile" routerLinkActive="active"> <i class="bi bi-bar-chart"></i>Section Profil</a> </li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/parking" routerLinkActive="active"> <i class="bi bi-bookmarks"></i>Parking</a> </li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/user" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Gestion des utilisateurs</a> </li>
@@ -20,11 +20,14 @@
                   <img src="../../../assets/image/lOGOUT.png" alt="Logo" width="50" height="50">
               </a></li>
             </ul>
+
+        </div>
+        
+        <div class="profile">
+          <div ><img src="../../../assets/image/mm.png" width="120"></div>
         </div>
 
-        <div class="profile">
-          <div ><img src="../../../assets/image/LogoSopraSoft.jpeg" width="120"></div>
-      </div>
+
     </div>
 </div>
 

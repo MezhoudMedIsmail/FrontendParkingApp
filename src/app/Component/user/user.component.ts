@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { UserServiceService } from 'src/app/Service/user.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -150,14 +151,22 @@ export class UserComponent {
         this.userData = res;
 
         this.getUsers();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Ajout éffectuée avec succés',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        window.location.reload();
       },
 
       (error: any) => {
-        console.log(error);
+        Swal.fire('Oops',"Veuillez vérifier les champs",'error')
       }
     );
    }else{
-    alert("fill in the blanks with the rigth values")
+    Swal.fire('Oops',"Veuillez vérifier les champs",'error')
    }
 
     console.log(user);
@@ -172,7 +181,15 @@ export class UserComponent {
 
   deleteUser(id: any) {
     this.service.delete(id).subscribe((res: any) => {
-      alert(res);
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Suppression éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      })
+      window.location.reload();
     });
 
     this.getUsers();
@@ -195,13 +212,28 @@ export class UserComponent {
       !this.userModify.voitures?.matricule &&
       !this.userModify.voitures?.type
     ) {
-      alert('Please fill in all required fields');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Modification éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      })
+      window.location.reload();
       return; // Exit the function if any required field is empty
     }
 
     // If all required fields are filled, proceed with the modification
     this.service.modify(this.userModify.id, this.userModify).subscribe((res: any) => {
-      alert('Updated successfully');
+      window.location.reload();
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Modification éffectuée avec succés',
+        showConfirmButton: false,
+        timer: 3000
+      });
+
     });
   }
 }
