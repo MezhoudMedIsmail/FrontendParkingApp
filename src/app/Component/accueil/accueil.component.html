@@ -12,10 +12,6 @@
           </li>
         </ul>
       </div>
-      <a href="#" class="btn-download">
-        <i class='bx bxs-cloud-download' ></i>
-        <span class="text">Download PDF</span>
-      </a>
     </div>
 
     <ul class="box-info">
@@ -54,51 +50,21 @@
           <thead>
             <tr>
               <th>User</th>
-              <th>Date Order</th>
-              <th>Status</th>
+              <th>Date début</th>
+              <th>Date Fin</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let his of listHistory">
               <td>
-                <img src="https://secure.gravatar.com/avatar/d09eaad01aea86c51b4f892b4f8abf6f?s=100&d=wavatar&r=g">
-                <p>John Doe</p>
+                <img [src]="imageProfile" id="output" width="200" alt="Profile Picture"/>
+
               </td>
-              <td>01-10-2023</td>
-              <td><span class="status completed">Completed</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="https://secure.gravatar.com/avatar/d09eaad01aea86c51b4f892b4f8abf6f?s=100&d=wavatar&r=g">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2023</td>
+              <td>{{his.startingDate |date}}</td>
+              <td>{{his.endDate | date}}</td>
               <td><span class="status pending">Pending</span></td>
             </tr>
-            <tr>
-              <td>
-                <img src="https://secure.gravatar.com/avatar/d09eaad01aea86c51b4f892b4f8abf6f?s=100&d=wavatar&r=g">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status process">Process</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="https://secure.gravatar.com/avatar/d09eaad01aea86c51b4f892b4f8abf6f?s=100&d=wavatar&r=g">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>
-                <img src="https://secure.gravatar.com/avatar/d09eaad01aea86c51b4f892b4f8abf6f?s=100&d=wavatar&r=g">
-                <p>John Doe</p>
-              </td>
-              <td>01-10-2023</td>
-              <td><span class="status completed">Completed</span></td>
-            </tr>
+
           </tbody>
         </table>
       </div>

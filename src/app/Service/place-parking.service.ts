@@ -76,4 +76,8 @@ constructor(private Http : HttpClient) {
   getHistory() : Observable<any[]>{
     return this.Http.get<any[]>(API_URL_History);
   }
+
+  getHistoryPerId(id : string) : Observable<any[]>{
+    return this.Http.get<any[]>(API_URL_History+"/"+id);
+  }
 }

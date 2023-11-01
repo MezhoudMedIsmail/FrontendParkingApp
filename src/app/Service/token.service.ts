@@ -23,6 +23,9 @@ export class TokenService {
   public getToken(): string | null {
     return window.localStorage.getItem(TOKEN_KEY) !== null ? window.localStorage.getItem(TOKEN_KEY) : null;
   }
+  public getId(): string | null {
+    return window.localStorage.getItem(ID_KEY) !== null ? window.localStorage.getItem(ID_KEY) : null;
+  }
 
   public getRole(){
     const jwtToken = this.getToken();
