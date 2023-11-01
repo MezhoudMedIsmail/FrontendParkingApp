@@ -1,6 +1,6 @@
 
 <mat-toolbar style="background-color: #143f6d;">
-  Parkings View
+  Vue parkings
 </mat-toolbar>
 
 <div class="content">
@@ -9,8 +9,8 @@
     *ngIf="adminCheck"
       data-toggle="modal"
       data-target="#exampleModalCenter"
-      class="btn d-inline-flex btn-sm mx-1">
-      <span class="badge rounded-pill bg-info text-dark"> <i class="bi bi-plus"></i> </span> <span>Create</span>
+      class="btn btn-success">
+      <span style="color:aliceblue">Créer un nouveau parking</span>
     </a>
   </div>
 </div>
@@ -27,11 +27,11 @@
               data-toggle="modal"
               data-target="#modifyParking"
               (click)="openModel(parking)">
-                <span class="pe-2"> <i class="bi bi-pencil"></i> </span> <span>Edit</span>
+                <span class="pe-2"> <i class='bx bxs-edit-alt'></i> </span> <span>Modifier</span>
               </button>
               <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
               (click)="deleteParking(parking.id)">
-              <span class="pe-2"> <i class="bi bi-x-circle-fill"></i> </span> <span>Delete</span>
+              <span class="pe-2"> <i class='bx bxs-message-x'></i> </span> <span>Supprimer</span>
               </button>
     </div>
   </div>

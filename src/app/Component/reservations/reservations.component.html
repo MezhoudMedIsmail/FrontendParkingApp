@@ -12,7 +12,7 @@
       <th scope="col">Date début</th>
       <th scope="col">Date fin </th>
       <th scope="col">Nom</th>
-      <th scope="col">Emails</th>
+      <th scope="col">Email</th>
       <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
@@ -24,8 +24,8 @@
       <td>{{placeParking.endDate | date}}</td>
       <td>{{placeParking.user?.lastName}}</td>
       <td>{{placeParking.user?.email}}</td>
-      <td><button class="btn btn-primary" (click)="reservation(placeParking,true)"> Confirm</button></td>
-      <td><button class="btn btn-danger" (click)="reservation(placeParking,false)">Refuse</button></td>
+      <td><button class="btn btn-success" (click)="reservation(placeParking,true)"><i class='bx bxs-message-square-check' ></i>  Confirmer</button></td>
+      <td><button class="btn btn-danger" (click)="reservation(placeParking,false)"><i class='bx bxs-message-x'></i> Refuser</button></td>
     </tr>
   </tbody>
 </table>

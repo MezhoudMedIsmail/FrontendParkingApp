@@ -1,14 +1,14 @@
 
     <div class="head-title">
       <div class="left">
-        <h1>Dashboard</h1>
+        <h1>Tableau de bord</h1>
         <ul class="breadcrumb">
           <li>
-            <a href="#">Dashboard</a>
+            <a href="#">Tableau de bord</a>
           </li>
           <li><i class='bx bx-chevron-right' ></i></li>
           <li>
-            <a class="active" href="#">Home</a>
+            <a class="active" href="#">Accueil</a>
           </li>
         </ul>
       </div>
@@ -48,7 +48,7 @@
         <table>
           <thead>
             <tr>
-              <th>User</th>
+              <th>Utilisateurs</th>
               <th>Date début</th>
               <th>Date Fin</th>
             </tr>
@@ -61,7 +61,6 @@
               </td>
               <td>{{his.startingDate |date}}</td>
               <td>{{his.endDate | date}}</td>
-              <td><span class="status pending">Pending</span></td>
             </tr>
 
           </tbody>
@@ -70,8 +69,6 @@
       <div class="todo">
         <div class="head">
           <h3>Calendrier</h3>
-          <i class='bx bx-plus' ></i>
-          <i class='bx bx-filter' ></i>
         </div>
         <mat-card class="demo-inline-calendar-card">
           <mat-calendar></mat-calendar>
