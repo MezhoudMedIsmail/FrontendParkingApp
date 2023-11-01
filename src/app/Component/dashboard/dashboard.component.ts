@@ -28,7 +28,7 @@ addToggle()
 
   logOut(){
     localStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/ogin"]);
   }
 
 

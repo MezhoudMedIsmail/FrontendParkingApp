@@ -24,13 +24,14 @@ role !: any;
   onSubmit() {
     this.authService.login(this.loginRequest).subscribe(
       (response: any) => {
+        console.log(response)
         localStorage.setItem('token', response.token);
         const decodedToken: any = jwt_decode(response.token);
         const role = decodedToken.role;
         localStorage.setItem('role',role);
-        localStorage.setItem('email',decodedToken.sub)
+        localStorage.setItem('email',decodedToken.sub);
         localStorage.setItem('id',decodedToken.id);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/Dashboard']);
         // Redirect to dashboard or other authenticated pages
       },
       (error) => {(Swal.fire('Oops',"Veuillez vérifier les champs",'error'))
