@@ -8,36 +8,37 @@
     <li routerLinkActive="active">
       <a routerLink=":Dashboard/Accueil">
         <i class='bx bxs-dashboard' ></i>
-        <span class="text">Accueill</span>
+        <span class="text">Accueil</span>
       </a>
     </li>
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Statistiques">
-        <i class='bx bxs-shopping-bag-alt' ></i>
+        <i class='bx bxs-doughnut-chart' ></i>
         <span class="text">Statistiques</span>
       </a>
     </li>
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Resrvations">
-        <i class='bx bxs-doughnut-chart' ></i>
-        <span class="text">Reservation</span>
+
+        <i class='bx bxs-shopping-bag-alt' ></i>
+        <span class="text">Reservations</span>
       </a>
     </li>
     <li routerLinkActive="active">
       <a routerLink="/Dashboard/Users/Profil">
-        <i class='bx bxs-message-dots' ></i>
-        <span class="text">Profile</span>
+        <i class='bx bxs-user-rectangle'></i>
+        <span class="text">Profil</span>
       </a>
     </li>
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Users/GestionUser">
         <i class='bx bxs-group' ></i>
-        <span class="text">Gestion Utilisateur</span>
+        <span class="text">Gestion Utilisateurs</span>
       </a>
     </li>
     <li routerLinkActive="active">
       <a routerLink="/Dashboard/Parking">
-        <i class='bx bxs-cog' ></i>
+        <i class='bx bxs-parking'></i>
         <span class="text">Parkings</span>
       </a>
     </li>
