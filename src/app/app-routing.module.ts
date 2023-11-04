@@ -64,7 +64,7 @@ const routes: Routes = [
         data: {
           role: ["Admin"]
         }
-      },
+      },{ path: '', redirectTo: '/Dashboard/Accueil', pathMatch: 'full' }, // redirect to
     ]
   },
   { path: '', redirectTo: '/Dashboard/Accueil', pathMatch: 'full' }, // redirect to

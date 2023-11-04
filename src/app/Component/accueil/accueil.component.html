@@ -18,23 +18,23 @@
       <li>
         <i class='bx bxs-calendar-check' ></i>
         <span class="text">
-          <p>Parkings</p>
+          <h3>Parkings</h3>
+          <p>{{this.ListParkings.length}}</p>
         </span>
       </li>
       <li>
         <i class='bx bxs-group' ></i>
         <span class="text">
           <h3>2834</h3>
-          <p>Total places</p>
+          <p>{{this.placeParkings.length}}</p>
         </span>
       </li>
       <li>
         <i class='bx bxs-dollar-circle' ></i>
         <span class="text">
-          <tr *ngFor="let parking of ListParkings">
-              <td>{{parking}}</td>
-          </tr>
-          <p>Places disponibles</p>
+
+          <h3>Places disponibles</h3>
+          <p>{{nbPlaceDispo}}</p>
         </span>
       </li>
     </ul>

@@ -16,28 +16,30 @@ export class AccueilComponent {
   imageProfile!: SafeUrl;
   listHistory : any[] = [];
   userId: string = '';
-  ListParkings!: any[];
+  ListParkings : any[] = [];
   placeParkings :any[] =[];
+  nbPlaceDispo :number = 0;
 
-
-  constructor(private placeService : PlaceParkingService,private tokenService : TokenService,private service: UserServiceService,private sanitizer: DomSanitizer,private sservice: ParkingService,private ssservice: PlaceParkingService){
+  constructor(private placeService : PlaceParkingService,private tokenService : TokenService,private service: UserServiceService,private sanitizer: DomSanitizer,private parkingService: ParkingService){
     this.getHistory();
     this.userId = localStorage.getItem('id') as string;
     this.getImage(this.userId as string);
-
+    this.getParkings();
+    this.getPlaceParkings();
   }
 
-  get(){
-    this.ssservice.get().subscribe((res:any)=>{
+  getPlaceParkings(){
+    this.placeService.get().subscribe((res:any)=>{
       this.placeParkings = res;
       console.log(res)
+      this.nbPlaceDispo = this.placeParkings.filter(obj => obj.status === false ).length
     });
   }
 
   getParkings(){
-    this.sservice.get().subscribe((res:any)=>{
+    this.parkingService.get().subscribe((res:any)=>{
       this.ListParkings = res;
-      console.log(res)
+      console.log(this.ListParkings)
     });
   }
 
