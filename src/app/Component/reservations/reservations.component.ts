@@ -16,6 +16,7 @@ export class ReservationsComponent {
     this.placeParkingService.getBooked().subscribe((res :any)=>{
       this.listBookedPlaceParkings = res;
     })
+
     this.placeParkingService.getReserved().subscribe((res : any)=>{
       this.listReservedPlaceParkings = res;
     })
@@ -30,20 +31,23 @@ export class ReservationsComponent {
     placeParking.status = status;
     if(status){
       this.placeParkingService.reserver(placeParking.id,placeParking).subscribe((res :any)=>{
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Confirmation avec succés',
-          showConfirmButton: false,
-          timer: 7000
-        })
-        Swal.fire('Oops',"Confirmation échouée",'error');
+
       })
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Confirmation avec succés',
+        showConfirmButton: false,
+        timer: 7000
+      });
+      window.location.reload();
     }else{
       this.placeParkingService.cancelReserver(placeParking.id).subscribe(()=>{
         Swal.fire('Oops',"La réservation est annulée",'error');
         window.location.reload();
       })
     }
+
   }
+
 }

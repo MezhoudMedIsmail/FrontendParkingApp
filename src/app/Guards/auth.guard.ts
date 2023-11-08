@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Your session is Expired please try to loggIn again',
+          title: 'Votre session est éxpriée',
           showConfirmButton: false,
           timer: 3000
         })
