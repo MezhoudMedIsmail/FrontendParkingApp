@@ -180,8 +180,7 @@ export class UserComponent {
   }
 
   deleteUser(id: any) {
-    this.service.delete(id).subscribe((res: any) => {
-
+    this.service.delete(id).subscribe(() => {
       Swal.fire({
         position: 'center',
         icon: 'success',

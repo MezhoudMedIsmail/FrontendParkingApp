@@ -105,6 +105,7 @@ export class ParkingComponent {
           showConfirmButton: false,
           timer: 3000
         })
+        window.location.reload();
       });
 
       this.getParkings();
