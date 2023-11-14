@@ -1,76 +1,81 @@
-
-    <div class="head-title">
-      <div class="left">
-        <h1>Tableau de bord</h1>
-        <ul class="breadcrumb">
-          <li>
-            <a href="#">Tableau de bord</a>
-          </li>
-          <li><i class='bx bx-chevron-right' ></i></li>
-          <li>
-            <a class="active" href="#">Accueil</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <ul class="box-info">
+<div class="head-title">
+  <div class="left">
+    <h1>Tableau de bord</h1>
+    <ul class="breadcrumb">
       <li>
-        <i class='bx bxs-parking'></i>
-        <span class="text">
-          <h3>Parkings</h3>
-          <p>{{this.ListParkings.length}}</p>
-        </span>
+        <a href="#">Tableau de bord</a>
       </li>
+      <li><i class="bx bx-chevron-right"></i></li>
       <li>
-        <i class='bx bx-bar-chart-alt'></i>
-          <span class="text">
-          <h3>Total des places</h3>
-          <p>{{this.placeParkings.length}}</p>
-        </span>
-      </li>
-      <li>
-        <i class='bx bx-check'></i>
-          <span class="text">
-          <h3>Places disponibles</h3>
-          <p>{{nbPlaceDispo}}</p>
-        </span>
+        <a class="active" href="#">Accueil</a>
       </li>
     </ul>
-
-
-    <div class="table-data">
-      <div class="order">
-        <div class="head">
-          <h3>Historique des occupations</h3>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Utilisateurs</th>
-              <th>Date début</th>
-              <th>Date Fin</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let his of listHistory">
-              <td>
-                <img [src]="imageProfile" id="output" width="200" alt="Profile Picture"/>
-
-              </td>
-              <td>{{his.startingDate |date}}</td>
-              <td>{{his.endDate | date}}</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-      <div class="todo">
-        <div class="head">
-          <h3>Calendrier</h3>
-        </div>
-        <mat-card class="demo-inline-calendar-card">
-          <mat-calendar></mat-calendar>
-        </mat-card>
-      </div>
+  </div>
+</div>
+<ul class="box-info">
+  <!-- Informations sur les parkings -->
+  <li>
+    <i class="bx bxs-parking"></i>
+    <span class="text">
+      <h3>Parkings</h3>
+      <p>{{ this.ListParkings.length }}</p>
+    </span>
+  </li>
+  <!-- Total des places de parking -->
+  <li>
+    <i class="bx bx-bar-chart-alt"></i>
+    <span class="text">
+      <h3>Total des places</h3>
+      <p>{{ this.placeParkings.length }}</p>
+    </span>
+  </li>
+  <!-- Places de parking disponibles -->
+  <li>
+    <i class="bx bx-check"></i>
+    <span class="text">
+      <h3>Places disponibles</h3>
+      <p>{{ nbPlaceDispo }}</p>
+    </span>
+  </li>
+</ul>
+<div class="table-data">
+  <!-- Historique des occupations -->
+  <div class="order">
+    <div class="head">
+      <h3>Historique des occupations</h3>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Utilisateurs</th>
+          <th>Date début</th>
+          <th>Date Fin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Affichage de l'historique des occupations -->
+        <tr *ngFor="let his of listHistory">
+          <td>
+            <img
+              [src]="imageProfile"
+              id="output"
+              width="200"
+              alt="Profile Picture"
+            />
+          </td>
+          <td>{{ his.startingDate | date }}</td>
+          <td>{{ his.endDate | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Section "à faire" avec un calendrier -->
+  <div class="todo">
+    <div class="head">
+      <h3>Calendrier</h3>
+    </div>
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar></mat-calendar>
+    </mat-card>
+  </div>
+</div>

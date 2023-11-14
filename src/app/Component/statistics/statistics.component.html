@@ -1,12 +1,16 @@
-  <div>
-  <button class="btn btn-primary"  (click)="convetToPDF()"> <i class='bx bxs-file-pdf' ></i> Génerer rapport PDF</button>
-  </div>
-
-
+<div>
+  <!-- Bouton qui déclenche la fonction convetToPDF() lorsqu'il est cliqué -->
+  <button class="btn btn-primary" (click)="convetToPDF()">
+    <!-- Icône représentant un fichier PDF -->
+    <i class="bx bxs-file-pdf"></i> Générer rapport PDF
+  </button>
+</div>
 
 <div id="contentToConvert">
   <table class="table table-striped">
+    <!-- En-tête du tableau -->
     <thead>
+      <!-- Ligne d'en-tête avec les titres de colonnes -->
       <tr>
         <th scope="col">#</th>
         <th scope="col">Utilisateurs</th>
@@ -14,17 +18,23 @@
         <th scope="col">Date fin</th>
       </tr>
     </thead>
+    <!-- Corps du tableau -->
     <tbody>
+      <!-- Boucle *ngFor pour afficher les données d'historique -->
       <tr *ngFor="let history of listHistory">
-        <th scope="row">{{history.id}}</th>
-        <td>{{history.name}}</td>
-        <td>{{history.startingDate | date}}</td>
-        <td>{{history.endDate | date}}</td>
+        <!-- Cellule d'en-tête avec l'identifiant de l'historique -->
+        <th scope="row">{{ history.id }}</th>
+        <!-- Cellule avec le nom de l'utilisateur -->
+        <td>{{ history.name }}</td>
+        <!-- Cellule avec la date de début de l'historique formatée -->
+        <td>{{ history.startingDate | date }}</td>
+        <!-- Cellule avec la date de fin de l'historique formatée -->
+        <td>{{ history.endDate | date }}</td>
       </tr>
     </tbody>
   </table>
 
-    <div echarts [options]="option" class="chart-container"></div>
+  <!-- Commentaire sur l'élément contenant le graphique ECharts -->
 
-
+  <div echarts [options]="option" class="chart-container"></div>
 </div>

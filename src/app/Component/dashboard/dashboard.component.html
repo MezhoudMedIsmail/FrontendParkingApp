@@ -1,84 +1,92 @@
 <!-- SIDEBAR -->
 <section id="sidebar" [ngClass]="status ? 'hide' : ''">
+  <!-- Logo de la marque -->
   <a href="#" class="brand">
-    <img src="../../../assets/image/mm.png" width="120">
+    <img src="../../../assets/image/mm.png" width="120" />
   </a>
 
+  <!-- Menu latéral -->
   <ul class="side-menu top">
+    <!-- Accueil -->
     <li routerLinkActive="active">
       <a routerLink=":Dashboard/Accueil">
-        <i class='bx bxs-dashboard' ></i>
+        <i class="bx bxs-dashboard"></i>
         <span class="text">Accueil</span>
       </a>
     </li>
+
+    <!-- Statistiques (visible uniquement pour les administrateurs) -->
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Statistiques">
-        <i class='bx bxs-doughnut-chart' ></i>
+        <i class="bx bxs-doughnut-chart"></i>
         <span class="text">Statistiques</span>
       </a>
     </li>
+
+    <!-- Réservations (visible uniquement pour les administrateurs) -->
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Resrvations">
-
-        <i class='bx bxs-shopping-bag-alt' ></i>
+        <i class="bx bxs-shopping-bag-alt"></i>
         <span class="text">Reservations</span>
       </a>
     </li>
+
+    <!-- Profil utilisateur -->
     <li routerLinkActive="active">
       <a routerLink="/Dashboard/Users/Profil">
-        <i class='bx bxs-user-rectangle'></i>
+        <i class="bx bxs-user-rectangle"></i>
         <span class="text">Profil</span>
       </a>
     </li>
+
+    <!-- Gestion des utilisateurs (visible uniquement pour les administrateurs) -->
     <li routerLinkActive="active" *ngIf="adminCheck">
       <a routerLink="/Dashboard/Users/GestionUser">
-        <i class='bx bxs-group' ></i>
+        <i class="bx bxs-group"></i>
         <span class="text">Gestion Utilisateurs</span>
       </a>
     </li>
+
+    <!-- Parkings -->
     <li routerLinkActive="active">
       <a routerLink="/Dashboard/Parking">
-        <i class='bx bxs-parking'></i>
+        <i class="bx bxs-parking"></i>
         <span class="text">Parkings</span>
       </a>
     </li>
   </ul>
+
+  <!-- Section de déconnexion -->
   <ul class="side-menu">
     <li>
       <a href="#" class="logout" (click)="logOut()">
-        <i class='bx bxs-log-out-circle' ></i>
+        <i class="bx bxs-log-out-circle"></i>
         <span class="text">Déconnexion</span>
       </a>
     </li>
   </ul>
 </section>
 <!-- SIDEBAR -->
-
-
-
 <!-- CONTENT -->
 <section id="content">
-  <!-- NAVBAR -->
+  <!-- Barre de navigation -->
   <nav>
-    <i (click)="addToggle()" class='bx bx-menu' ></i>
+    <!-- Icône pour basculer la barre latérale -->
+    <i (click)="addToggle()" class="bx bx-menu"></i>
     <form></form>
 
+    <!-- Profil utilisateur dans la barre de navigation -->
     <a href="#" class="profile" routerLink="/Dashboard/Users/Profil">
-      <img [src]="imageProfile" alt="user Image Profile">
-      {{email}}
+      <img [src]="imageProfile" alt="user Image Profile" />
+      {{ email }}
     </a>
   </nav>
-  <!-- NAVBAR -->
 
-  <!-- MAIN -->
+  <!-- Contenu principal -->
   <main>
-<router-outlet></router-outlet>
+    <!-- Point d'insertion pour les vues basées sur le routage -->
+    <router-outlet></router-outlet>
   </main>
-  <!-- MAIN -->
+  <!-- Contenu principal -->
 </section>
 <!-- CONTENT -->
-
-
-
-
-

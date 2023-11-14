@@ -1,9 +1,9 @@
-<!-- Editable table -->
+<!-- Début du conteneur de la carte (card) -->
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
     Tableau de gestion des utilisateurs
   </h3>
-  <!-- Button trigger modal -->
+  <!-- Bouton déclenchant la modal pour l'ajout d'un nouvel utilisateur -->
   <div class="col-sm-6 col-12 text-sm-end">
     <button
       type="button"
@@ -14,8 +14,14 @@
     <i class='bx bxs-add-to-queue'></i> Nouvel utilisateur
     </button>
   </div>
+    <!-- Corps de la carte -->
+
   <div class="card-body">
+        <!-- Conteneur du tableau -->
+
     <div id="table">
+            <!-- Tableau HTML avec les en-têtes des colonnes -->
+
       <table
         class="table table-bordered table-responsive-md table-striped text-center"
       >
@@ -33,7 +39,11 @@
           </tr>
         </thead>
         <tbody>
+                    <!-- Utilisation de *ngFor pour itérer sur la liste des utilisateurs (ListUsers) -->
+
           <tr *ngFor="let user of ListUsers">
+                        <!-- Affichage des informations de chaque utilisateur dans une ligne du tableau -->
+
             <th scope="row">{{ user.id }}</th>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
@@ -42,6 +52,8 @@
             <td>{{ user.phone_num }}</td>
             <td>{{ user.hiring_date }}</td>
             <td>{{ user.role }}</td>
+            <!-- ... (d'autres colonnes) ... -->
+            <!-- Boutons d'action pour supprimer et modifier un utilisateur -->
             <td>
               <button
                 type="button"
@@ -67,8 +79,7 @@
         </tbody>
       </table>
 
-      <!-- Model ajout user -->
-      <div
+<!-- Modal pour l'ajout d'un nouvel utilisateur -->      <div
         class="modal fade"
         id="exampleModalCenter"
         tabindex="-1"
@@ -201,7 +212,7 @@
         </div>
       </div>
 
-      <!-- Model modify user -->
+      <!-- Modal pour la modification d'un utilisateur -->
 
       <div
         class="modal fade"
@@ -215,7 +226,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
-                Update User
+                Modifier Utilisateur
               </h5>
               <button
                 type="button"
@@ -349,4 +360,4 @@
 
   </div>
 </div>
-<!-- Editable table -->
+<!-- Fin du conteneur de la carte -->

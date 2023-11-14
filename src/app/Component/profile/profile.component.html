@@ -1,203 +1,253 @@
-<section style="background-color: #eee;">
-  <div class="container py-5" >
-    <div class="row" >
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <!-- Barre de navigation de la page de profil -->
+    <div class="row">
       <div class="col">
-        <mat-toolbar  class="breadcrumb-item active" aria-current="page" style="background-color: #143f6d; color: aliceblue;"  >Votre profil</mat-toolbar>
+        <!-- Utilisation de mat-toolbar pour créer une barre de navigation stylisée -->
+        <mat-toolbar
+          class="breadcrumb-item active"
+          aria-current="page"
+          style="background-color: #143f6d; color: aliceblue"
+        >
+          Votre profil
+        </mat-toolbar>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
+      <!-- Colonne gauche du profil avec la photo, le nom, et le bouton de mise à jour -->
 
+      <div class="col-lg-4">
+        <!-- Carte Bootstrap pour encadrer le contenu -->
+        <div class="card mb-4">
+          <!-- Corps de la carte avec style centré -->
           <div class="card-body text-center">
+            <!-- Section pour la modification de la photo de profil -->
             <div class="profile-pic">
-              <label class="-label" for="file" >
+              <label class="-label" for="file">
+                <!-- Icône de la caméra et texte "Modifier Photo" -->
                 <span class="glyphicon glyphicon-camera"></span>
                 <span>Modifier Photo</span>
               </label>
-              <input id="file" type="file" (change)="onImageUpload($event)"/>
-              <img [src]="imageProfile" id="output" width="200" alt="Profile Picture"/>
+              <!-- Champ de téléchargement de fichier déclenchant la fonction onImageUpload lorsqu'il est modifié -->
+              <input id="file" type="file" (change)="onImageUpload($event)" />
+              <!-- Image de profil affichée dynamiquement à partir de la variable imageProfile -->
+              <img
+                [src]="imageProfile"
+                id="output"
+                width="200"
+                alt="Profile Picture"
+              />
             </div>
 
-            <h5 class="my-3"> {{user.firstName + " " + user.lastName}}</h5>
-            <p class="text-muted mb-1">{{user.post_title}}</p>
+            <!-- Nom complet de l'utilisateur -->
+            <h5 class="my-3">{{ user.firstName + " " + user.lastName }}</h5>
+
+            <!-- Poste de l'utilisateur avec style texte atténué -->
+            <p class="text-muted mb-1">{{ user.post_title }}</p>
+
+            <!-- Bouton de mise à jour avec icône d'édition -->
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary"  data-toggle="modal"
-              data-target="#modifyUser"><i class='bx bxs-edit-alt'></i> Mettre à jour</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#modifyUser"
+              >
+                <i class="bx bxs-edit-alt"></i> Mettre à jour
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Colonne droite du profil avec les détails de l'utilisateur -->
+
       <ng-container>
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Prènom</p>
+        <!-- Utilisation d'une colonne Bootstrap avec une largeur de 8 colonnes pour la mise en page -->
+        <div class="col-lg-8">
+          <!-- Carte Bootstrap encadrant le contenu avec une marge inférieure -->
+          <div class="card mb-4">
+            <!-- Corps de la carte avec style -->
+            <div class="card-body">
+              <!-- Section des détails de l'utilisateur avec une structure de grille -->
+              <div class="row">
+                <!-- Chaque paire de label (col-sm-3) et valeur (col-sm-9) est placée dans une ligne distincte -->
+                <div class="col-sm-3">
+                  <p class="mb-0">Prénom</p>
+                </div>
+                <div class="col-sm-9">
+                  <!-- Affichage du prénom de l'utilisateur -->
+                  <p class="text-muted mb-0">{{ user.firstName }}</p>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.firstName}}</p>
+              <hr />
+              <!-- Répétition du modèle pour les autres détails de l'utilisateur -->
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nom</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.lastName }}</p>
+                </div>
               </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Nom</p>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.email }}</p>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.lastName}}</p>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Vous êtes un</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.post_title }}</p>
+                </div>
               </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Téléphone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.phone_num }}</p>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.email}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Vous etes un </p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.post_title}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Téléphone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.phone_num}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Date d'embauche</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.hiring_date | date}}</p>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date d'embauche</p>
+                </div>
+                <div class="col-sm-9">
+                  <!-- Utilisation du filtre de date pour afficher la date d'embauche dans un format spécifique -->
+                  <p class="text-muted mb-0">{{ user.hiring_date | date }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </ng-container>
     </div>
   </div>
 </section>
 
-
-
+<!-- Modèle de fenêtre modale pour la modification des informations utilisateur -->
 
 <div
-class="modal fade"
-id="modifyUser"
-tabindex="-1"
-role="dialog"
-aria-labelledby="modifyUser"
-aria-hidden="true"
+  class="modal fade"
+  id="modifyUser"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modifyUser"
+  aria-hidden="true"
 >
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLongTitle">
-        Update User
-      </h5>
-      <button
-        type="button"
-        class="close"
-        data-dismiss="modal"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form #f="ngForm" (ngSubmit)="modifyUsers(f)">
-        <div class="form-group">
-          <label for="exampleInputName">FirstName</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputfirstName"
-            placeholder="Enter your name please"
-            [(ngModel)]="user.firstName"
-            name="firstName"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputLastName">Last Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputLastName"
-            placeholder="Enter your last name please"
-            name="lastName"
-            [(ngModel)]="user.lastName"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputJobTitle">Job title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputJobTitle"
-            placeholder="Enter your job title please"
-            name="post_title"
-            [(ngModel)]="user.post_title"
-            required="ressss"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPhoneNumber">Phone Number</label>
-          <input
-
-            type="text"
-            class="form-control"
-            id="exampleInputPhoneNumber"
-            placeholder="Enter your Phone Number please"
-            name="phone_num"
-            [(ngModel)]="user.phone_num"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputHiringDate">Hiring Date</label>
-          <input
-            type="date"
-            class="form-control"
-            id="exampleInputHiringDate"
-            placeholder="Enter your hiring date please"
-            name="hiring_date"
-            [(ngModel)]="user.hiring_date"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputemail">E-mail</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputemail"
-            placeholder="Enter your email please"
-            name="email"
-            [(ngModel)]="user.email"
-            required
-          />
-        </div>
-        <button class="btn btn-primary">Submit</button>
-      </form>
+  <!-- Contenu de la fenêtre modale centré sur l'écran -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- Contenu de la fenêtre modale -->
+    <div class="modal-content">
+      <!-- En-tête de la fenêtre modale avec titre et bouton de fermeture -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modifier profil</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <!-- Bouton de fermeture avec l'icône 'X' -->
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Corps de la fenêtre modale avec le formulaire de modification utilisateur -->
+      <div class="modal-body">
+        <!-- Formulaire Angular avec référence 'f' et gestionnaire de soumission 'modifyUsers' -->
+        <form #f="ngForm" (ngSubmit)="modifyUsers(f)">
+          <!-- Chaque groupe de formulaire a une étiquette et un champ de saisie -->
+          <div class="form-group">
+            <label for="exampleInputName">Prénom</label>
+            <!-- Champ de saisie pour le prénom avec liaison bidirectionnelle [(ngModel)] -->
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputfirstName"
+              placeholder="Enter your name please"
+              [(ngModel)]="user.firstName"
+              name="firstName"
+              required
+            />
+          </div>
+          <!-- Répétition du modèle pour les autres champs de formulaire -->
+          <div class="form-group">
+            <label for="exampleInputLastName">Nom</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputLastName"
+              placeholder="Enter your last name please"
+              name="lastName"
+              [(ngModel)]="user.lastName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputJobTitle">Titre du poste</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputJobTitle"
+              placeholder="Enter your job title please"
+              name="post_title"
+              [(ngModel)]="user.post_title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPhoneNumber">Numéro de télephone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputPhoneNumber"
+              placeholder="Enter your Phone Number please"
+              name="phone_num"
+              [(ngModel)]="user.phone_num"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputHiringDate">Date d'embauche</label>
+            <!-- Champ de saisie pour la date d'embauche avec type 'date' -->
+            <input
+              type="date"
+              class="form-control"
+              id="exampleInputHiringDate"
+              placeholder="Enter your hiring date please"
+              name="hiring_date"
+              [(ngModel)]="user.hiring_date"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputemail">E-mail</label>
+            <!-- Champ de saisie pour l'adresse e-mail avec type 'email' -->
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputemail"
+              placeholder="Enter your email please"
+              name="email"
+              [(ngModel)]="user.email"
+              required
+            />
+          </div>
+          <!-- Bouton de soumission du formulaire -->
+          <button class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div>

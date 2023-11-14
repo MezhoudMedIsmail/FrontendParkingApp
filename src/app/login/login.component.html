@@ -1,48 +1,95 @@
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<!-- Section principale de la page de connexion avec un dégradé de couleur de fond -->
+<section class="h-100 gradient-form" style="background-color: #eee">
+  <!-- Conteneur principal avec une marge extérieure de 5 unités de hauteur -->
   <div class="container py-5 h-100">
+    <!-- Alignement vertical et horizontal du contenu au centre de la page -->
     <div class="row d-flex justify-content-center align-items-center h-100">
+      <!-- Colonne extra large occupant 10 unités de largeur -->
       <div class="col-xl-10">
+        <!-- Carte arrondie avec un arrière-plan textuel -->
         <div class="card rounded-3 text-black">
+          <!-- Ligne contenant deux colonnes : la première pour le formulaire de connexion, la deuxième pour une image -->
           <div class="row g-0">
+            <!-- Première colonne de taille large -->
             <div class="col-lg-6">
+              <!-- Corps de la carte avec une marge intérieure à gauche de 5 unités -->
               <div class="card-body p-md-5 mx-md-4">
-
+                <!-- Logo et message de bienvenue centrés -->
                 <div class="text-center">
-                  <img src="https://www.soprasteria.fr/images/librariesprovider2/sopra-steria-fr-images/divers/shr.jpg?sfvrsn=ca00cbdc_6"
-                    style="width: 185px;" alt="logo">
+                  <img
+                    src="https://www.soprasteria.fr/images/librariesprovider2/sopra-steria-fr-images/divers/shr.jpg?sfvrsn=ca00cbdc_6"
+                    style="width: 185px"
+                    alt="logo"
+                  />
                   <h4 class="mt-1 mb-5 pb-1">Bienvenue à EasyPark</h4>
                 </div>
 
+                <!-- Formulaire de connexion -->
                 <form>
+                  <!-- Message d'instruction -->
                   <p>Merci de vous connecter</p>
 
+                  <!-- Champ d'entrée pour l'email avec liaison à la variable 'loginRequest.email' -->
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example11" class="form-control" name="email" [(ngModel)]="loginRequest.email"
-                      placeholder="Email" />
+                    <input
+                      type="email"
+                      id="form2Example11"
+                      class="form-control"
+                      name="email"
+                      [(ngModel)]="loginRequest.email"
+                      placeholder="Email"
+                    />
                     <label class="form-label" for="form2Example11">Email</label>
                   </div>
 
+                  <!-- Champ d'entrée pour le mot de passe avec liaison à la variable 'loginRequest.password' -->
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" name="password" [(ngModel)]="loginRequest.password" />
-                    <label class="form-label" for="form2Example22">Mot de passe</label>
+                    <input
+                      type="password"
+                      id="form2Example22"
+                      class="form-control"
+                      name="password"
+                      [(ngModel)]="loginRequest.password"
+                    />
+                    <label class="form-label" for="form2Example22"
+                      >Mot de passe</label
+                    >
                   </div>
 
+                  <!-- Bouton de connexion -->
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" (click)="onSubmit()" type="submit">Se connecter</button>
+                    <button
+                      class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                      (click)="onSubmit()"
+                      type="submit"
+                    >
+                      Se connecter
+                    </button>
                   </div>
 
-                  <div class="d-flex align-items-center justify-content-center pb-4">
+                  <!-- Lien vers la page d'inscription -->
+                  <div
+                    class="d-flex align-items-center justify-content-center pb-4"
+                  >
                     <p class="mb-0 me-2">Vous n'avez pas de compte ?</p>
-                    <button type="button" class="btn btn-outline-danger" routerLink="/Register">S'inscrire</button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      routerLink="/Register"
+                    >
+                      S'inscrire
+                    </button>
                   </div>
-
                 </form>
-
               </div>
             </div>
+
+            <!-- Deuxième colonne avec une image de taille spécifique -->
             <div class="col-lg-6 d-flex">
-                <img src="../../assets/image/sopra.png" style="width: 445px;
-                                                              height: 640px;">
+              <img
+                src="../../assets/image/sopra.png"
+                style="width: 445px; height: 640px"
+              />
             </div>
           </div>
         </div>

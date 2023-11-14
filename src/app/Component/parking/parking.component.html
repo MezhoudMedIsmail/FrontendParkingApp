@@ -1,184 +1,68 @@
-
 <mat-toolbar style="background-color: #143f6d;">
   Vue parkings
 </mat-toolbar>
-
 <div class="content">
-  <div class="mx-n1"  class="text-left">
-    <a
-    *ngIf="adminCheck"
-      data-toggle="modal"
-      data-target="#exampleModalCenter"
-      class="btn btn-success">
+  <div class="mx-n1" class="text-left">
+    <a *ngIf="adminCheck" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success">
       <span style="color:aliceblue">Créer un nouveau parking</span>
     </a>
   </div>
 </div>
-
 <div class="grid">
   <ng-container *ngFor="let parking of ListParkings">
-  <div class="card" style="width: 18rem;">
-    <img style="cursor: pointer;" routerLink="/Dashboard/Parking/PlaceParking/{{parking.id}}" mat-card-image src="../assets/image/image1.jpg">
-    <div class="card-body">
-      <h5 class="card-title">{{parking.libelle}}</h5>
-    </div>
-    <div class="card-body" *ngIf="adminCheck">
+    <div class="card" style="width: 18rem;">
+      <!-- Image de parking cliquable qui dirige vers le détail du parking -->
+      <img style="cursor: pointer;" routerLink="/Dashboard/Parking/PlaceParking/{{parking.id}}" mat-card-image src="../assets/image/image1.jpg">
+      <div class="card-body">
+        <h5 class="card-title">{{parking.libelle}}</h5>
+      </div>
+      <!-- Actions supplémentaires pour les administrateurs -->
+      <div class="card-body" *ngIf="adminCheck">
         <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
-              data-toggle="modal"
-              data-target="#modifyParking"
-              (click)="openModel(parking)">
-                <span class="pe-2"> <i class='bx bxs-edit-alt'></i> </span> <span>Modifier</span>
-              </button>
-              <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
-              (click)="deleteParking(parking.id)">
-              <span class="pe-2"> <i class='bx bxs-message-x'></i> </span> <span>Supprimer</span>
-              </button>
+                data-toggle="modal"
+                data-target="#modifyParking"
+                (click)="openModel(parking)">
+          <span class="pe-2"> <i class='bx bxs-edit-alt'></i> </span> <span>Modifier</span>
+        </button>
+        <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
+                (click)="deleteParking(parking.id)">
+          <span class="pe-2"> <i class='bx bxs-message-x'></i> </span> <span>Supprimer</span>
+        </button>
+      </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
 </div>
-<div
-class="modal fade"
-id="exampleModalCenter"
-tabindex="-1"
-role="dialog"
-aria-labelledby="exampleModalCenterTitle"
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLongTitle">Parking</h5>
-      <button
-        type="button"
-        class="close"
-        data-dismiss="modal"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="formulaire" (ngSubmit)="check()">
-        <div class="form-group">
-          <label for="exampleInputAdresse">Adresse</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputAdresse"
-            aria-describedby="AdresseHelp"
-            placeholder="Enter the adress of the new Parking"
-            formControlName="adresse"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputCapacite">Capacite</label>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleInputCapacite"
-            placeholder="Entrer la capacite de votre nouveau Parking"
-            formControlName="capacite"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputJobTitle">Libelle</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputLibelle"
-            placeholder="Entrer le libelle de votre nouveau Parking "
-            formControlName="libelle"
-          />
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="submit"
-          class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-<div
-  class="modal fade"
-  id="modifyUser"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="modifyUser"
-  aria-hidden="true"
->
+<!-- Fenêtre modale pour créer un nouveau parking -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- Contenu de la fenêtre modale -->
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+      <!-- En-tête de la fenêtre modale -->
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">modify Parking</h5>
-
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <h5 class="modal-title" id="exampleModalLongTitle">Parking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+      <!-- Corps de la fenêtre modale avec un formulaire pour créer un parking -->
       <div class="modal-body">
-        <form #f="ngForm" (ngSubmit)="modifyParkings(f)">
+        <form [formGroup]="formulaire" (ngSubmit)="check()">
+          <!-- Champs du formulaire (adresse, capacité, libellé) -->
           <div class="form-group">
-            <label for="exampleInputName">libelle</label>
-
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputLibelle"
-              placeholder="Enter your name please"
-              name="libelle"
-              [(ngModel)]="parkingModify.libelle"
-            />
+            <label for="exampleInputAdresse">Adresse</label>
+            <input type="text" class="form-control" id="exampleInputAdresse" aria-describedby="AdresseHelp" placeholder="Enter the adress of the new Parking" formControlName="adresse" />
           </div>
-
           <div class="form-group">
-            <label for="exampleInputCapacite">capacite</label>
-
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputcapacite"
-              placeholder="Enter your last name please"
-              name="capacite"
-              [(ngModel)]="parkingModify.capacite"
-            />
+            <label for="exampleInputCapacite">Capacite</label>
+            <input type="number" class="form-control" id="exampleInputCapacite" placeholder="Enter la capacite de votre nouveau Parking" formControlName="capacite" />
           </div>
-
           <div class="form-group">
-            <label for="exampleInputJobTitle">Adresse</label>
-
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputJobTitle"
-              placeholder="Enter your job title please"
-              name="adresse"
-              [(ngModel)]="parkingModify.adresse"
-            />
+            <label for="exampleInputJobTitle">Libelle</label>
+            <input type="text" class="form-control" id="exampleInputLibelle" placeholder="Enter le libelle de votre nouveau Parking " formControlName="libelle" />
           </div>
-
+          <!-- Pied de la fenêtre modale avec les boutons de fermeture et de sauvegarde -->
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>
@@ -186,8 +70,41 @@ aria-hidden="true">
     </div>
   </div>
 </div>
-
-
-
-
-
+<!-- Fenêtre modale pour modifier un parking existant -->
+<div class="modal fade" id="modifyParking" tabindex="-1" role="dialog" aria-labelledby="modifyUser" aria-hidden="true">
+  <!-- Contenu de la fenêtre modale -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- En-tête de la fenêtre modale -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modifier Parking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Corps de la fenêtre modale avec un formulaire pour modifier un parking -->
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="modifyParkings(f)">
+          <!-- Champs du formulaire (libellé, capacité, adresse) -->
+          <div class="form-group">
+            <label for="exampleInputName">libelle</label>
+            <input type="text" class="form-control" id="exampleInputLibelle" placeholder="Enter your name please" name="libelle" [(ngModel)]="parkingModify.libelle" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputCapacite">capacite</label>
+            <input type="text" class="form-control" id="exampleInputcapacite" placeholder="Enter your last name please" name="capacite" [(ngModel)]="parkingModify.capacite" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputJobTitle">Adresse</label>
+            <input type="text" class="form-control" id="exampleInputJobTitle" placeholder="Enter your job title please" name="adresse" [(ngModel)]="parkingModify.adresse" />
+          </div>
+          <!-- Pied de la fenêtre modale avec les boutons de fermeture et de sauvegarde -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
